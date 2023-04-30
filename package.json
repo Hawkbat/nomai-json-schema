@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npx tsc"
   },
+  "repository": "https://github.com/Hawkbat/nomai-json-schema",
   "author": "Hawkbar",
   "license": "MIT",
   "files": [
