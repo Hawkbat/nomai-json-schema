@@ -1,0 +1,90 @@
+
+.nomai-json-schema-root {
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    font-size: 12px;
+    color: white;
+}
+
+.nomai-json-schema-properties {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+.nomai-json-schema-property {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid #000;
+    margin-top: 10px;
+}
+
+.nomai-json-schema-property-header {
+    display: flex;
+    align-items: center;
+    background: #222;
+    cursor: pointer;
+    user-select: none;
+}
+
+.nomai-json-schema-property-key {
+    font-size: 16px;
+    padding: 10px;
+}
+
+.nomai-json-schema-property-arrow {
+    font-size: 24px;
+    width: 1em;
+    height: 1em;
+    margin-right: 10px;
+}
+
+.nomai-json-schema-schema {
+    display: flex;
+    flex-direction: column;
+    background: #333;
+    border-top: 1px solid #777;
+    padding: 10px;
+}
+
+.nomai-json-schema-path {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.nomai-json-schema-attributes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.nomai-json-schema-attribute {
+    display: flex;
+    background: #444;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.nomai-json-schema-attribute-key {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.nomai-json-schema-attribute-value {
+    font-size: 12px;
+}
+
+.nomai-json-schema-description {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.nomai-json-schema-error {
+    color: red;
+}
+
+.nomai-json-schema-spacer {
+    flex: 1 0 0;
+}

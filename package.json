@@ -1,0 +1,20 @@
+{
+  "name": "nomai-json-schema",
+  "version": "1.0.0",
+  "description": "An embeddable React app for browsing JSON schemas.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "author": "Hawkbar",
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "index.css"
+  ],
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.1",
+    "typescript": "^5.0.4"
+  }
+}
