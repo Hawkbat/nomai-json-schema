@@ -134,10 +134,12 @@
                     <AttributeBox name="Items Must Be Unique" value={schema.uniqueItems} />
                     <AttributeBox name="Contained Item Maximum" value={schema.maxContains} />
                     <AttributeBox name="Contained Item Minimum" value={schema.minContains} />
+                    {typeof schema.additionalItems === 'boolean' ? <AttributeBox name="Additional Items Allowed" value={schema.additionalItems} /> : null}
                     {/* Object attributes */}
                     <AttributeBox name="Maximum Property Count" value={schema.maxProperties} />
                     <AttributeBox name="Minimum Property Count" value={schema.maxProperties} />
                     <AttributeBox name="Required Properties" value={schema.required} />
+                    {typeof schema.additionalProperties === 'boolean' ? <AttributeBox name="Additional Properties Allowed" value={schema.additionalProperties} /> : null}
                     {schema.dependentRequired ? Object.keys(schema.dependentRequired).map(key => <AttributeBox key={key} name={`Required If \`${key}\` Present`} value={schema.dependentRequired![key]} />) : null}
                     {schema.dependencies ? Object.keys(schema.dependencies).map(key => ({ key, value: schema.dependencies![key] })).map(({ key, value }) => Array.isArray(value) ? <AttributeBox key={key} name={`Required If \`${key}\` Present`} value={value} /> : null) : null}
                     {/* Content attributes */}
@@ -154,13 +156,21 @@
                     <JsonPropertyBox name="Must Contain" schema={schema.contains} ctx={ctxValue} />
                     {/* Object properties */}
                     {schema.properties ? Object.keys(schema.properties).map(key => <JsonPropertyBox key={key} name={key} schema={schema.properties![key]} required={schema.required?.includes(key)} ctx={ctxValue} startClosed />) : null}
-                    {schema.patternProperties ? Object.keys(schema.patternProperties).map(key => <JsonPropertyBox key={key} name={`Pattern (Regex): ${key}`} schema={schema.patternProperties![key]} ctx={ctxValue} />) : null}
+                    {schema.patternProperties ? Object.keys(schema.patternProperties).map(key => <JsonPropertyBox name={`Pattern (Regex): ${key}`} schema={schema.patternProperties![key]} ctx={ctxValue} />) : null}
                     {schema.additionalProperties ? <JsonPropertyBox name="Additional Properties" schema={schema.additionalProperties} ctx={ctxValue} /> : null}
                     {schema.dependentSchemas ? Object.keys(schema.dependentSchemas).map(key => <JsonPropertyBox name={`If \`${key}\` Present:`} schema={schema.dependentSchemas![key]} ctx={ctxValue} />) : null}
                     {schema.dependencies ? Object.keys(schema.dependencies).map(key => ({ key, value: schema.dependencies![key] })).map(({ key, value }) => Array.isArray(value) ? null : <JsonPropertyBox name={`If \`${key}\` Present:`} schema={value} ctx={ctxValue} />) : null}
                     <JsonPropertyBox name="Valid Property Names" schema={schema.propertyNames} ctx={ctxValue} />
                     {/* Content properties */}
                     <JsonPropertyBox name="Content" schema={schema.contentSchema} ctx={ctxValue} />
+                    {/* Meta properties */}
+                    {schema.allOf?.map((s, i) => <JsonPropertyBox key={i} name="All Of These Apply:" schema={s} ctx={ctxValue} />)}
+                    {schema.anyOf?.map((s, i) => <JsonPropertyBox key={i} name="Any Of These Apply:" schema={s} ctx={ctxValue} />)}
+                    {schema.oneOf?.map((s, i) => <JsonPropertyBox key={i} name="One Of These Apply:" schema={s} ctx={ctxValue} />)}
+                    <JsonPropertyBox name="This Must Not Apply:" schema={schema.not} ctx={ctxValue} />
+                    <JsonPropertyBox name="If This Schema Applies:" schema={schema.if} ctx={ctxValue} />
+                    <JsonPropertyBox name="Then This Schema Applies:" schema={schema.then} ctx={ctxValue} />
+                    <JsonPropertyBox name="Otherwise This Schema Applies:" schema={schema.else} ctx={ctxValue} />
                 </div>
             </div>
         } catch (error) {
