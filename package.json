@@ -1,6 +1,6 @@
 {
   "name": "nomai-json-schema",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "An embeddable React app for browsing JSON schemas.",
   "main": "index.js",
   "scripts": {

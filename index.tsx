@@ -96,7 +96,8 @@
             const uri = schema.$id ? resolveUri(schema.$id, ctx.baseUri) : ctx.baseUri
             const ref = schema.$ref ? resolvePointer(schema.$ref, ctx.root, ctx.baseUri) : null
             if (ref) {
-                return JsonSchemaBox({ schema: ref, ctx })
+                const { $ref, ...rest } = schema
+                return JsonSchemaBox({ schema: { ...ref, ...rest }, ctx })
             }
             const ctxValue = uri?.href !== ctx.baseUri?.href ? { ...ctx, baseUri: uri } : ctx
             return <div className={getClass("schema")}>
